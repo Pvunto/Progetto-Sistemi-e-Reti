@@ -61,11 +61,7 @@ I dati possono essere trasmessi in formato testuale strutturato (ad esempio JSON
 
 ### Server
 
-1. Avviare il server:
-
-   ```
-   python server.py
-   ```
+1. Avviare il server.
 
 2. Il server rimarrà in ascolto sulla porta configurata.
 
@@ -75,29 +71,8 @@ I dati possono essere trasmessi in formato testuale strutturato (ad esempio JSON
 
 2. Avviare il client:
 
-   ```
-   python client.py
-   ```
-
 3. Il client invierà i dati al server.
 
-## Possibili Estensioni
-
-- Gestione di più client simultanei (multithreading o async)
-- Persistenza dei dati su database
-- Validazione dei dati in ingresso
-- Implementazione di protocolli di sicurezza (TLS)
-- Interfaccia grafica per il monitoraggio
-
-## Struttura della Repository
-
-```
-/project-root
-│── client.py
-│── server.py
-│── README.md
-│── docs/
-```
 
 ## Autore
 
