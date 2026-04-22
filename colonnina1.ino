@@ -5,51 +5,59 @@
 #define pPOn 3
 
 String id_macchina = "C001";
-bool vPOn = false;
+volatile bool triggerStampa = false;  // flag interrupt
+
 int valore = 0;
 int percentuale = 0;
 
-LiquidCrystal lcd(12, 11, 10, 9, 8, 7);
+LiquidCrystal lcd(12, 11, 5, 4, 7, 2);
+
+// ISR (deve essere veloce!)
+void onButtonPress() {
+  triggerStampa = true;
+}
 
 void setup() {
   Serial.begin(9600);
 
   lcd.begin(16, 2);
-
+  lcd.setCursor(0,0);
+  lcd.clear();
+  lcd.print("Salve");
   pinMode(PIN_POT, INPUT);
-  pinMode(pPOn, INPUT_PULLUP);  // ✔ corretto
+  pinMode(pPOn, INPUT_PULLUP);
+
+  attachInterrupt(digitalPinToInterrupt(pPOn), onButtonPress, FALLING);
 }
 
 void loop() {
 
   // Lettura potenziometro
   valore = analogRead(PIN_POT);
-
-  // Lettura pulsante (invertita perché pullup)
-  vPOn =!digitalRead(pPOn);
-
-  // Percentuale
   percentuale = map(valore, 0, 1023, 0, 100);
 
   int clienti = random(0, 50);
   int profitto = percentuale * 2;
   int runtime = millis() / 1000;
 
-  StaticJsonDocument<200> doc;
+  // Se interrupt attivato
+  if (triggerStampa) {
 
-  doc["id_macchina"] = id_macchina;
-  doc["clienti_day"] = clienti;
-  doc["consumo"] = percentuale;
-  doc["profitto"] = profitto;
-  doc["runtime"] = runtime;
+    triggerStampa = false;  // reset flag
 
-  if (vPOn) {
+    StaticJsonDocument<200> doc;
 
-    // JSON pulito
+    doc["id_macchina"] = id_macchina;
+    doc["clienti_day"] = clienti;
+    doc["consumo"] = percentuale;
+    doc["profitto"] = profitto;
+    doc["runtime"] = runtime;
+
+    // JSON
     serializeJsonPretty(doc, Serial);
     Serial.println();
 
-    // LCD pulito
+    // LCD
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Batteria:");
