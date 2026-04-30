@@ -21,7 +21,10 @@
         echo "<p class='error'>Descrizione dell'errore: ".$db_connessione->error."</p>";
     }
 
-    $db_sql="SELECT id_colonnina, nclienti, consumo, profitto, runtime FROM COLONNINA;";
+    $db_sql = "SELECT id_colonnina, nclienti, consumo, profitto, runtime
+               FROM COLONNINA
+               WHERE id_colonnina IN ('C001','C002','C003')
+               ORDER BY runtime DESC;"; //stampa solo quella con runtime maggiore
 
     $risultato=$db_connessione->query($db_sql);
 
@@ -38,15 +41,14 @@
                 <th>profitto</th>
                 <th>runtime</th>
             </tr>";
-            while($riga=$risultato->fetch_assoc()){
-                $stampa=$stampa."<tr>";
-                $stampa=$stampa."<td>".$riga['id_colonnina']."</td>";
-                $stampa=$stampa."<td>".$riga['nclienti']."</td>";
-                $stampa=$stampa."<td>".$riga['consumo']."</td>";
-                $stampa=$stampa."<td>".$riga['profitto']."</td>";
-                $stampa=$stampa."<td>".$riga['runtime']."</td>";
-                $stampa=$stampa."</tr>";
-            }
+            $riga=$risultato->fetch_assoc();
+            $stampa=$stampa."<tr>";
+            $stampa=$stampa."<td>".$riga['id_colonnina']."</td>";
+            $stampa=$stampa."<td>".$riga['nclienti']."</td>";
+            $stampa=$stampa."<td>".$riga['consumo']."</td>";
+            $stampa=$stampa."<td>".$riga['profitto']."</td>";
+            $stampa=$stampa."<td>".$riga['runtime']."</td>";
+            $stampa=$stampa."</tr>";
             $stampa=$stampa."</table>";
             echo $stampa;
         }
