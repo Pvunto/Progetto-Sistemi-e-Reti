@@ -9,6 +9,13 @@ volatile bool triggerStampa = false;  // flag interrupt
 
 int valore = 0;
 int percentuale = 0;
+char buffer[10]; // "hh:mm:ss" + terminatore
+unsigned long secondiTot =0;
+int ore = 0;
+int minuti =0;
+int secondi=0;
+int clienti=0;
+int profitto=0;
 
 LiquidCrystal lcd(12, 11, 5, 4, 7, 2);
 
@@ -36,22 +43,26 @@ void loop() {
   valore = analogRead(PIN_POT);
   percentuale = map(valore, 0, 1023, 0, 100);
 
-  int clienti = random(0, 50);
-  int profitto = percentuale * 2;
-  int runtime = millis() / 1000;
+  clienti = random(0, 50);
+  profitto = percentuale * 2;
 
   // Se interrupt attivato
   if (triggerStampa) {
 
     triggerStampa = false;  // reset flag
+    secondiTot = millis() / 1000;
+    ore=secondiTot / 3600;
+    minuti = (secondiTot % 3600) / 60;
+    secondi = secondiTot % 60;
 
+    sprintf(buffer, "%02d:%02d:%02d", ore, minuti, secondi);
     StaticJsonDocument<200> doc;
 
     doc["id_macchina"] = id_macchina;
     doc["clienti_day"] = clienti;
     doc["consumo"] = percentuale;
     doc["profitto"] = profitto;
-    doc["runtime"] = runtime;
+    doc["runtime"] = buffer;
 
     // JSON
     serializeJsonPretty(doc, Serial);
