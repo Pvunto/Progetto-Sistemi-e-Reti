@@ -16,7 +16,7 @@ int minuti =0;
 int secondi=0;
 int clienti=0;
 int profitto=0;
-
+String posizione="Latitude: \(45.70092^{\circ }\) NLongitude: \(12.25935^{\circ }\) E";
 LiquidCrystal lcd(12, 11, 5, 4, 7, 2);
 
 // ISR (deve essere veloce!)
@@ -63,6 +63,7 @@ void loop() {
     doc["consumo"] = percentuale;
     doc["profitto"] = profitto;
     doc["runtime"] = buffer;
+    doc["posizione"] = posizione;
 
     // JSON
     serializeJsonPretty(doc, Serial);
