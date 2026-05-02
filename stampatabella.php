@@ -40,6 +40,7 @@
                 <th>consumo</th>
                 <th>profitto</th>
                 <th>runtime</th>
+                <th>posizione</th>
             </tr>";
             $riga=$risultato->fetch_assoc();
             $stampa=$stampa."<tr>";
@@ -48,6 +49,7 @@
             $stampa=$stampa."<td>".$riga['consumo']."</td>";
             $stampa=$stampa."<td>".$riga['profitto']."</td>";
             $stampa=$stampa."<td>".$riga['runtime']."</td>";
+            $stampa=$stampa."<td>".$riga['posizione']."</td>";
             $stampa=$stampa."</tr>";
             $stampa=$stampa."</table>";
             echo $stampa;

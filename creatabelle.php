@@ -17,7 +17,8 @@
         nclienti int(3) not null,
         consumo int(3) not null,
         profitto int(4),
-        runtime int(3)
+        runtime int(3),
+        posizione varchar(60)
     );";  //il primo ; è legato al crea tabella e il secondo alla query
     if($db_connessione->query($db_sql)){
         echo"\ntabella creata correttamente";
