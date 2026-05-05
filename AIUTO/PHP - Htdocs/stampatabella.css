@@ -1,0 +1,371 @@
+/* ===================================
+   STILI GENERALI
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================
+   INTESTAZIONE PRINCIPALE
+   =================================== */
+h1 {
+    color: #2c3e50;
+    font-size: 2em;
+    margin: 20px 0 30px 0;
+    border-bottom: 4px solid #3498db;
+    padding-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+h2 {
+    color: #2c3e50;
+    font-size: 1.5em;
+    margin: 20px 0 15px 0;
+}
+
+h3 {
+    color: #34495e;
+    font-size: 1.2em;
+    margin: 15px 0 10px 0;
+}
+
+/* ===================================
+   MESSAGGI SUCCESS/ERROR
+   =================================== */
+p.success {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-left: 4px solid #28a745;
+    border-radius: 4px;
+    color: #155724;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+p.success::before {
+    content: "✓";
+    font-size: 1.2em;
+}
+
+p.error {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-left: 4px solid #dc3545;
+    border-radius: 4px;
+    color: #721c24;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+p.error::before {
+    content: "✕";
+    font-size: 1.2em;
+}
+
+/* ===================================
+   TABELLA PRINCIPALE
+   =================================== */
+.stampatabella,
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stampatabella th,
+table th {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    padding: 14px 15px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #2980b9;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.stampatabella td,
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.stampatabella tbody tr,
+table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.stampatabella tbody tr:nth-child(even),
+table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.stampatabella tbody tr:hover,
+table tbody tr:hover {
+    background-color: #e3f2fd;
+    box-shadow: inset 0 1px 3px rgba(52, 152, 219, 0.1);
+}
+
+.stampatabella tbody tr:last-child td,
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===================================
+   COLONNE SPECIALI
+   =================================== */
+.stampatabella .id,
+table .id {
+    width: 60px;
+    font-weight: 600;
+    color: #3498db;
+    text-align: center;
+}
+
+.stampatabella .azioni,
+table .azioni {
+    width: 150px;
+    text-align: center;
+}
+
+.stampatabella .status,
+table .status {
+    text-align: center;
+}
+
+/* ===================================
+   BADGE E STATO
+   =================================== */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.badge-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.badge-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.badge-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.badge-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* ===================================
+   PULSANTI
+   =================================== */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 2px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    box-shadow: 0 2px 5px rgba(52, 152, 219, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    box-shadow: 0 2px 5px rgba(231, 76, 60, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background-color: #f39c12;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #d68910;
+    box-shadow: 0 2px 5px rgba(243, 156, 18, 0.4);
+}
+
+.btn-success {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #229954;
+    box-shadow: 0 2px 5px rgba(39, 174, 96, 0.4);
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.85em;
+}
+
+/* ===================================
+   FORM
+   =================================== */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* ===================================
+   TOOLBAR (Ricerca e Filtri)
+   =================================== */
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-box input {
+    width: 100%;
+}
+
+/* ===================================
+   PAGINAZIONE
+   =================================== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #3498db;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.pagination .active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+.footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    color: #666;
+    font-size: 0.9em;
+}
