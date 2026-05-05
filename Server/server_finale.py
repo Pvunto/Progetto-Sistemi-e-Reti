@@ -22,7 +22,7 @@ while True:
             try:
                 pacchetto = json.loads(riga)
                 for d in pacchetto:
-                    sql = "INSERT INTO log_macchine (id_macchina, clienti, consumo, profitto, runtime, posizione) VALUES (%s, %s, %s, %s, %s, %s)"
+                    sql = "INSERT INTO colonnine_ricarica (id_macchina, clienti, consumo, profitto, runtime, posizione) VALUES (%s, %s, %s, %s, %s, %s)"
                     val = (d.get("id_macchina"), d.get("clienti_day"), d.get("consumo"), d.get("profitto"), d.get("runtime"), d.get("posizione"))
                     cursor.execute(sql, val)
                 db.commit()
