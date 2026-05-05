@@ -1,0 +1,8 @@
+CREATE TABLE colonnine_ricarica (
+    id_macchina TEXT PRIMARY KEY,
+    clienti INTEGER,
+    consumo INTEGER,
+    profitto INTEGER,
+    runtime TEXT,
+    posizione TEXT
+)
